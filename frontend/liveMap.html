@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CivicConnect - Civic Management Platform</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/livemap.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">🏛️</div>
+                <div>
+                    <div>CivicConnect</div>
+                    <div style="font-size: 12px; color: #6b7280; font-weight: 400;">Civic Management Platform</div>
+                </div>
+            </div>
+            <nav class="nav">
+                <a href="front.html" class="nav-item">Home</a>
+                <a href="report.html" class="nav-item">Report Issue</a>
+                <a href="liveMap.html" class="nav-item active">Live Map</a>
+                <a href="tracking.html" class="nav-item">Track Issues</a>
+                <a href="Admin.html" class="nav-item">Admin Portal</a>
+            </nav>
+            <div class="header-actions">
+                <button class="notification-bell">
+                    🔔
+                    <div class="notification-dot"></div>
+                </button>
+                <i class="fa-solid fa-user"></i>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1 class="hero-title">Live Issue Map & Tracking</h1>
+            <p class="hero-subtitle">Track reported issues in real-time. See what's being fixed and monitor progress in your area.</p>
+        </section>
+
+        <!-- Content Grid -->
+        <div class="content-grid">
+            <!-- Interactive Map Section -->
+            <section class="map-section">
+                <div class="section-header">
+                    <h2 class="section-title">📍 Interactive Issue Map</h2>
+                    <p class="section-subtitle">Real-time view of civic issues </p>
+                    <div class="filter-dropdown">
+                        <button class="filter-btn" id="filterBtn">
+                            🔽 All Issues
+                        </button>
+                        <div class="dropdown-menu" id="dropdownMenu">
+                            <div class="dropdown-item" data-filter="all">All Issues</div>
+                            <div class="dropdown-item" data-filter="roads">Roads & Infrastructure</div>
+                            <div class="dropdown-item" data-filter="sanitation">Sanitation & Waste</div>
+                            <div class="dropdown-item" data-filter="water">Water Supply</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="map-container">
+                    <div id="map" style="height: 400px; width: 100%; border-radius: 12px; z-index: 1;"></div>
+                </div>
+            </section>
+
+            <!-- Recent Issues Section -->
+            <section class="recent-issues">
+                <div class="section-header">
+                    <h2 class="section-title">Recent Issues</h2>
+                    <a href="#" class="view-all-link">View All</a>
+                </div>
+                
+                <div class="issues-list" id="recentIssuesList">
+                    <!-- Issues will be dynamically loaded here by script.js -->
+                </div>
+            </section>
+        </div>
+    </main>
+    <!-- footer -->
+   <footer class="footer">
+    <div class="footer-content">
+      <!-- Branding -->
+      <div class="footer-section branding">
+        <div class="branding-icon">
+          <img src="https://img.icons8.com/ios-filled/24/ffffff/marker.png" alt="marker"/>
+        </div>
+        <div class="branding-text">
+          <h3>CivicConnect</h3>
+          <small>Civic Platform</small>
+          <p>Empowering citizens to build cleaner, better communities through technology-driven civic engagement.</p>
+        </div>
+      </div>
+
+      <!-- Platform Links -->
+      <div class="footer-section">
+        <h3>Platform</h3>
+        <ul>
+          <li><a href="#">Report Issue</a></li>
+          <li><a href="#">Live Map</a></li>
+          <li><a href="#">Track Issues</a></li>
+          <li><a href="#">Leaderboard</a></li>
+        </ul>
+      </div>
+
+      <!-- Government Links -->
+      <div class="footer-section">
+        <h3>Government</h3>
+        <ul>
+          <li><a href="#">Admin Portal</a></li>
+          <li><a href="#">Analytics</a></li>
+          <li><a href="#">Departments</a></li>
+          <li><a href="gov.in" target="_blank">gov.in ↗</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div class="footer-section">
+        <h3>Contact</h3>
+        <ul>
+          <li>📧 support@civicconnect.gov.in</li>
+          <li>📞 +91-651-XXX-XXXX</li>
+          <li>📍 Department of Higher & Technical Education</li>
+          <li>Government </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2024 Government. Built for Clean & Green Technology Initiative.</div>
+      <div>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Accessibility</a>
+      </div>
+    </div>
+  </footer>
+
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

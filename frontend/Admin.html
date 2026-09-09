@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/Admin.css">
+    <title>Document</title>
+</head>
+<body>
+     <div class="container1">
+      <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">🏛️</div>
+                <div>
+                    <div>CivicConnect</div>
+                    <div style="font-size: 12px; color: #6b7280; font-weight: 400;">Civic Management Platform</div>
+                </div>
+            </div>
+            <nav class="nav">
+                <a href="front.html" class="nav-item active">Home</a>
+                <a href="report.html" class="nav-item">Report Issue</a>
+                <a href="liveMap.html" class="nav-item ">Live Map</a>
+                <a href="tracking.html" class="nav-item">Track Issues</a>
+                <a href="Admin.html" class="nav-item">Admin Portal</a>
+            </nav>
+            <div class="header-actions">
+                <button class="notification-bell">
+                    🔔
+                    <div class="notification-dot"></div>
+                </button>
+                <i class="fa-solid fa-user"></i>
+            </div>
+        </div>
+    </header>
+
+
+    <div class="container">
+        <div class="header">
+            <h1>Admin Dashboard</h1>
+            <p>Real-time analytics and management interface for government officials to track and resolve civic issues efficiently.</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card reports" onclick="filterReports('all')">
+                <div class="stat-header">
+                    <span class="stat-title">Total Reports</span>
+                    <div class="stat-icon reports">⚠</div>
+                </div>
+                <div class="stat-number" id="totalReports">--</div>
+            </div>
+
+            <div class="stat-card resolved" onclick="filterReports('resolved')">
+                <div class="stat-header">
+                    <span class="stat-title">Resolved</span>
+                    <div class="stat-icon resolved">✓</div>
+                </div>
+                <div class="stat-number" id="resolvedReports">--</div>
+            </div>
+
+            <div class="stat-card resolution">
+                <div class="stat-header">
+                    <span class="stat-title">Avg. Resolution</span>
+                    <div class="stat-icon resolution">⏱</div>
+                </div>
+                <div class="stat-number" id="avgResolution">--</div>
+            </div>
+
+            <div class="stat-card users">
+                <div class="stat-header">
+                    <span class="stat-title">Active Users</span>
+                    <div class="stat-icon users">👥</div>
+                </div>
+                <div class="stat-number" id="activeUsers">--</div>
+            </div>
+        </div>
+
+        <div class="charts-grid">
+            <div class="chart-card">
+                <div class="chart-header">
+                    <svg class="chart-icon" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
+                    </svg>
+                    <div>
+                        <div class="chart-title">Issues by Category</div>
+                        <div class="chart-subtitle">Reported vs Resolved issues across different categories</div>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="categoryChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-header">
+                    <svg class="chart-icon" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M11 2v20c-5.07-.5-9-4.79-9-10s3.93-9.5 9-10zm2.03 0v8.99H22c-.47-4.74-4.24-8.52-8.97-8.99zm0 11.01V22c4.74-.47 8.5-4.25 8.97-8.99h-8.97z"/>
+                    </svg>
+                    <div>
+                        <div class="chart-title">Issue Status Distribution</div>
+                        <div class="chart-subtitle">Current status of all reported issues</div>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="statusChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="reports-section">
+            <div class="section-header">
+                <div class="section-title">
+                    <svg class="section-title-icon" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                    <div>
+                        <h3>Recent Issue Reports</h3>
+                        <p>Latest civic issues requiring attention</p>
+                    </div>
+                </div>
+                <div class="controls">
+                    <button class="filter-btn" onclick="showFilters()">
+                        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M7 6h10l-5.01 6.3L7 6zm-2.75-.39C6.27 8.2 10 13 10 13v6c0 .55.45 1 1 1h2c.55 0 1-.45 1-1v-6s3.72-4.8 5.75-7.39c.51-.66.04-1.61-.79-1.61H5.04c-.83 0-1.3.95-.79 1.61z"/>
+                        </svg>
+                        All
+                    </button>
+                    <button class="export-btn" onclick="exportData()">
+                        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2v9.67z"/>
+                        </svg>
+                        Export
+                    </button>
+                </div>
+            </div>
+
+            <table class="reports-table">
+                <tbody id="reportsTableBody">
+                    <tr class="report-row">
+                        <td class="report-cell">
+                            <div class="report-id">JH-2024-001247</div>
+                            <div class="report-title">Large pothole on Station Road</div>
+                            <div class="report-location">Ranchi</div>
+                        </td>
+                        <td class="report-cell">
+                            <span class="category-tag">Roads</span>
+                            <span class="priority-tag priority-high">High</span>
+                        </td>
+                        <td class="report-cell">
+                            <span class="status-badge status-reported">Reported</span>
+                        </td>
+                        <td class="report-cell">
+                            <button class="action-btn" onclick="viewDetails('JH-2024-001247')">View Details</button>
+                        </td>
+                    </tr>
+
+                    <tr class="report-row">
+                        <td class="report-cell">
+                            <div class="report-id">JH-2024-001248</div>
+                            <div class="report-title">Broken streetlight near mall</div>
+                            <div class="report-location">Dhanbad</div>
+                        </td>
+                        <td class="report-cell">
+                            <span class="category-tag">Electricity</span>
+                            <span class="priority-tag priority-medium">Medium</span>
+                        </td>
+                        <td class="report-cell">
+                            <span class="status-badge status-in-progress">In Progress</span>
+                        </td>
+                        <td class="report-cell">
+                            <button class="action-btn" onclick="viewDetails('JH-2024-001248')">View Details</button>
+                        </td>
+                    </tr>
+
+                    <tr class="report-row">
+                        <td class="report-cell">
+                            <div class="report-id">JH-2024-001249</div>
+                            <div class="report-title">Garbage collection delayed</div>
+                            <div class="report-location">Jamshedpur</div>
+                        </td>
+                        <td class="report-cell">
+                            <span class="category-tag">Sanitation</span>
+                            <span class="priority-tag priority-low">Low</span>
+                        </td>
+                        <td class="report-cell">
+                            <span class="status-badge status-acknowledged">Acknowledged</span>
+                        </td>
+                        <td class="report-cell">
+                            <button class="action-btn" onclick="viewDetails('JH-2024-001249')">View Details</button>
+                        </td>
+                    </tr>
+
+                    <tr class="report-row">
+                        <td class="report-cell">
+                            <div class="report-id">JH-2024-001250</div>
+                            <div class="report-title">Water pipe leakage</div>
+                            <div class="report-location">Bokaro</div>
+                        </td>
+                        <td class="report-cell">
+                            <span class="category-tag">Water</span>
+                            <span class="priority-tag priority-critical">Critical</span>
+                        </td>
+                        <td class="report-cell">
+                            <span class="status-badge status-resolved">Resolved</span>
+                        </td>
+                        <td class="report-cell">
+                            <button class="action-btn" onclick="viewDetails('JH-2024-001250')">View Details</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+     <!-- footer -->
+   <footer class="footer">
+    <div class="footer-content">
+      <!-- Branding -->
+      <div class="footer-section branding">
+        <div class="branding-icon">
+          <img src="https://img.icons8.com/ios-filled/24/ffffff/marker.png" alt="marker"/>
+        </div>
+        <div class="branding-text">
+          <h3>CivicConnect</h3>
+          <small>Civic Platform</small>
+          <p>Empowering citizens to build cleaner, better communities through technology-driven civic engagement.</p>
+        </div>
+      </div>
+
+      <!-- Platform Links -->
+      <div class="footer-section">
+        <h3>Platform</h3>
+        <ul>
+          <li><a href="#">Report Issue</a></li>
+          <li><a href="#">Live Map</a></li>
+          <li><a href="#">Track Issues</a></li>
+          <li><a href="#">Leaderboard</a></li>
+        </ul>
+      </div>
+
+      <!-- Government Links -->
+      <div class="footer-section">
+        <h3>Government</h3>
+        <ul>
+          <li><a href="#">Admin Portal</a></li>
+          <li><a href="#">Analytics</a></li>
+          <li><a href="#">Departments</a></li>
+          <li><a href="gov.in" target="_blank">gov.in ↗</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div class="footer-section">
+        <h3>Contact</h3>
+        <ul>
+          <li>📧 support@civicconnect.gov.in</li>
+          <li>📞 +91-651-XXX-XXXX</li>
+          <li>📍 Department of Higher & Technical Education</li>
+          <li>Government </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2024 Government. Built for Clean & Green Technology Initiative.</div>
+      <div>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Accessibility</a>
+      </div>
+    </div>
+  </footer>
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

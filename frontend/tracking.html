@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/tracking.css">
+    <title>Document</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">🏛️</div>
+                <div>
+                    <div>CivicConnect</div>
+                    <div style="font-size: 12px; color: #6b7280; font-weight: 400;">Civic Management Platform</div>
+                </div>
+            </div>
+            <nav class="nav">
+                <a href="front.html" class="nav-item">Home</a>
+                <a href="report.html" class="nav-item">Report Issue</a>
+                <a href="liveMap.html" class="nav-item active">Live Map</a>
+                <a href="tracking.html" class="nav-item">Track Issues</a>
+                <a href="Admin.html" class="nav-item">Admin Portal</a>
+            </nav>
+            <div class="header-actions">
+                <button class="notification-bell">
+                    🔔
+                    <div class="notification-dot"></div>
+                </button>
+                <i class="fa-solid fa-user"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="header">
+            <h1>Track Your Reports</h1>
+            <p>Stay updated on the progress of your civic issue reports. Get notifications at every stage of resolution.</p>
+        </div>
+
+        <div class="main-content">
+            <!-- Track Report Status Section -->
+            <div class="section">
+                <div class="section-header">
+                    <svg class="section-icon" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                    </svg>
+                    <div>
+                        <h2 class="section-title">Track Report Status</h2>
+                        <p class="section-subtitle">Enter your report ID to check the current status</p>
+                    </div>
+                </div>
+
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Enter Report ID (e.g., JH-2024-001247)" id="reportInput">
+                    <button class="search-btn" onclick="searchReport()">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="report-card" id="reportCard" style="display: none;">
+                    <div class="report-header">
+                        <span class="report-id">Report #JH-2024-001247</span>
+                        <span class="status-badge">In Progress</span>
+                    </div>
+                    
+                    <h3 class="report-title"></h3>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-icon reported">!</div>
+                            <div class="timeline-content">
+                                <h4>Reported</h4>
+                                <p>Dec 15, 2024 - 2:30 PM</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-icon acknowledged">✓</div>
+                            <div class="timeline-content">
+                                <h4>Acknowledged</h4>
+                                <p>Dec 15, 2024 - 4:15 PM</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-icon progress">⟳</div>
+                            <div class="timeline-content">
+                                <h4>In Progress</h4>
+                                <p>Dec 16, 2024 - 10:00 AM</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-icon resolved">○</div>
+                            <div class="timeline-content">
+                                <h4>Resolved</h4>
+                                <p>Pending</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <p class="completion-text">Estimated completion: Dec 18, 2024</p>
+                </div>
+            </div>
+
+            <!-- Citizen Rewards Section -->
+            <div class="section">
+                <div class="section-header">
+                    <svg class="section-icon" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <div>
+                        <h2 class="section-title">Citizen Rewards</h2>
+                        <p class="section-subtitle">Earn points for active civic participation</p>
+                    </div>
+                </div>
+
+                <div class="points-display">
+                    <div class="points-number">1,247 Points</div>
+                    <p class="points-label">Your current balance</p>
+                </div>
+
+                <div class="rewards-progress">
+                    <div class="rewards-bar">
+                        <div class="rewards-fill"></div>
+                    </div>
+                    <p class="rewards-text">753 points to next level (Civic Champion)</p>
+                </div>
+
+                <div class="rewards-list">
+                    <div class="reward-item">
+                        <div class="reward-info">
+                            <h4>Issue Reported</h4>
+                            <p>Earn 50 points per report</p>
+                        </div>
+                        <span class="reward-points">+50</span>
+                    </div>
+                    
+                    <div class="reward-item">
+                        <div class="reward-info">
+                            <h4>Follow-up Provided</h4>
+                            <p>Additional info or photos</p>
+                        </div>
+                        <span class="reward-points">+25</span>
+                    </div>
+                    
+                    <div class="reward-item">
+                        <div class="reward-info">
+                            <h4>Issue Verified</h4>
+                            <p>When your report is confirmed</p>
+                        </div>
+                        <span class="reward-points">+100</span>
+                    </div>
+                </div>
+
+                <button class="notification-btn" onclick="toggleNotifications()">
+                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
+                    </svg>
+                    Enable Notifications
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- footer -->
+   <footer class="footer">
+    <div class="footer-content">
+      <!-- Branding -->
+      <div class="footer-section branding">
+        <div class="branding-icon">
+          <img src="https://img.icons8.com/ios-filled/24/ffffff/marker.png" alt="marker"/>
+        </div>
+        <div class="branding-text">
+          <h3>CivicConnect</h3>
+          <small>Civic Platform</small>
+          <p>Empowering citizens to build cleaner, better communities through technology-driven civic engagement.</p>
+        </div>
+      </div>
+
+      <!-- Platform Links -->
+      <div class="footer-section">
+        <h3>Platform</h3>
+        <ul>
+          <li><a href="#">Report Issue</a></li>
+          <li><a href="#">Live Map</a></li>
+          <li><a href="#">Track Issues</a></li>
+          <li><a href="#">Leaderboard</a></li>
+        </ul>
+      </div>
+
+      <!-- Government Links -->
+      <div class="footer-section">
+        <h3>Government</h3>
+        <ul>
+          <li><a href="#">Admin Portal</a></li>
+          <li><a href="#">Analytics</a></li>
+          <li><a href="#">Departments</a></li>
+          <li><a href="gov.in" target="_blank">gov.in ↗</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div class="footer-section">
+        <h3>Contact</h3>
+        <ul>
+          <li>📧 support@civicconnect.gov.in</li>
+          <li>📞 +91-651-XXX-XXXX</li>
+          <li>📍 Department of Higher & Technical Education</li>
+          <li>Government </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2024 Government. Built for Clean & Green Technology Initiative.</div>
+      <div>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Accessibility</a>
+      </div>
+    </div>
+  </footer>
+    
+  <script src="js/script.js"></script>
+</body>
+</html>
