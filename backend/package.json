@@ -4,7 +4,8 @@
   "description": "Simple backend for CivicConnect",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node init_db.js && node server.js",
+    "init-db": "node init_db.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
