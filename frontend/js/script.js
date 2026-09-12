@@ -1,5 +1,5 @@
 // Base URL for API
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = 'https://backend-production-6e3c.up.railway.app/api';
 
 // Execute when DOM is fully loaded
 document.addEventListener('DOMContentLoaded', function() {
