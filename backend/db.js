@@ -3,6 +3,7 @@ require('dotenv').config();
 
 const pool = mysql.createPool({
     host: process.env.MYSQLHOST || process.env.DB_HOST,
+    port: process.env.MYSQLPORT || process.env.DB_PORT || 3306,
     user: process.env.MYSQLUSER || process.env.DB_USER,
     password: process.env.MYSQLPASSWORD || process.env.DB_PASSWORD,
     database: process.env.MYSQLDATABASE || process.env.DB_NAME,
@@ -14,7 +15,7 @@ const pool = mysql.createPool({
 // Test connection
 pool.getConnection()
     .then(connection => {
-        console.log('✅ Connected to MySQL database:', process.env.DB_NAME);
+        console.log('✅ Connected to MySQL database:', process.env.MYSQLDATABASE || process.env.DB_NAME);
         connection.release();
     })
     .catch(err => {
