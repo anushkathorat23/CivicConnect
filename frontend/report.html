@@ -36,58 +36,145 @@
     </header>
 
 
-    <div class="container">
-    <h2>Report a Civic Issue</h2>
-    <p class="subtitle">Help make your community better by reporting issues that need attention.</p>
-
-    <form id="issueForm">
-      <fieldset>
-        <legend>Issue Details</legend>
-
-        <label for="issueType">Issue Type *</label>
-        <select id="issueType" name="issueType" required>
-          <option value="">Select issue type</option>
-          <option value="Pothole">Pothole</option>
-          <option value="Garbage">Garbage</option>
-          <option value="Streetlight">Streetlight</option>
-          <option value="Water Leakage">Water Leakage</option>
-          <option value="Drainage">Drainage</option>
-          <option value="Road Damage">Road Damage</option>
-          <option value="Other">Other</option>
-        </select>
-
-        <label for="priority">Priority Level *</label>
-        <select id="priority" name="priority" required>
-          <option value="">Select priority</option>
-          <option value="Low">Low</option>
-          <option value="Medium">Medium</option>
-          <option value="High">High</option>
-          <option value="Critical">Critical</option>
-        </select>
-
-        <label for="description">Description *</label>
-        <textarea id="description" name="description" rows="4" placeholder="Describe the issue in detail..." required></textarea>
-
-        <label for="location">Location</label>
-        <input type="text" id="location" name="location" placeholder="Location will be detected automatically">
-
-        <label for="photo">Photos</label>
-        <div class="photo-upload">
-          <input type="file" id="photo" name="photo" accept="image/*">
-          <button type="button" id="takePhoto">📷 Take Photo</button>
+    <main class="report-main">
+      <div class="split-layout">
+        
+        <!-- LEFT PANEL -->
+        <div class="info-panel">
+          <h1>See Something? Report It.</h1>
+          <p class="subtitle">Help your community by reporting an issue that needs attention.</p>
+          
+          <div class="steps-container">
+            <div class="step-item">
+              <div class="step-number">01</div>
+              <div class="step-content">
+                <h4>REPORT</h4>
+                <p>Tell us what needs attention.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-number">02</div>
+              <div class="step-content">
+                <h4>REVIEW</h4>
+                <p>Provide useful details and location.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-number">03</div>
+              <div class="step-content">
+                <h4>RESOLVE</h4>
+                <p>Track progress after submission.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="highlights">
+            <div class="highlight-item">
+              <div class="icon-circle"><i class="fas fa-map-marker-alt"></i></div>
+              <div>
+                <strong>Location</strong>
+                <p>Add where the issue is located.</p>
+              </div>
+            </div>
+            <div class="highlight-item">
+              <div class="icon-circle"><i class="fas fa-camera"></i></div>
+              <div>
+                <strong>Photos</strong>
+                <p>Provide visual evidence when useful.</p>
+              </div>
+            </div>
+            <div class="highlight-item">
+              <div class="icon-circle"><i class="fas fa-search"></i></div>
+              <div>
+                <strong>Tracking</strong>
+                <p>Receive a report ID and follow progress.</p>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <label for="name">Your Name (Optional)</label>
-        <input type="text" id="name" name="name" placeholder="Enter your name">
+        <!-- RIGHT FORM AREA -->
+        <div class="form-panel">
+          <h2>Tell us what happened</h2>
+          <p class="form-subtitle">Provide a few details so the issue can be routed to the relevant civic department.</p>
 
-        <label for="phone">Phone Number (Optional)</label>
-        <input type="tel" id="phone" name="phone" placeholder="Enter phone number">
+          <form id="issueForm" class="modern-form">
+            
+            <div class="form-section">
+              <h3>What needs attention?</h3>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="issueType">Issue Type *</label>
+                  <select id="issueType" name="issueType" required>
+                    <option value="">Select issue type</option>
+                    <option value="Pothole">Pothole</option>
+                    <option value="Garbage">Garbage</option>
+                    <option value="Streetlight">Streetlight</option>
+                    <option value="Water Leakage">Water Leakage</option>
+                    <option value="Drainage">Drainage</option>
+                    <option value="Road Damage">Road Damage</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="priority">Priority Level *</label>
+                  <select id="priority" name="priority" required>
+                    <option value="">Select priority</option>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                    <option value="Critical">Critical</option>
+                  </select>
+                </div>
+              </div>
+            </div>
 
-        <button type="submit" class="submit-btn">Submit Report</button>
-      </fieldset>
-    </form>
-    <p class="note">Your report will be automatically routed to the relevant department and you’ll receive updates on progress.</p>
-  </div>
+            <div class="form-section">
+              <h3>Tell us more</h3>
+              <div class="form-group">
+                <label for="description">Description *</label>
+                <textarea id="description" name="description" rows="5" placeholder="Describe the issue in detail..." required></textarea>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h3>Where is it?</h3>
+              <div class="form-group">
+                <label for="location">Location</label>
+                <input type="text" id="location" name="location" placeholder="Location will be detected automatically">
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h3>Add evidence</h3>
+              <div class="form-group photo-group">
+                <label for="photo">Photos</label>
+                <div class="photo-upload">
+                  <input type="file" id="photo" name="photo" accept="image/*">
+                  <button type="button" id="takePhoto"><i class="fas fa-camera"></i> Take Photo</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h3>Your details</h3>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name">Your Name (Optional)</label>
+                  <input type="text" id="name" name="name" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                  <label for="phone">Phone Number (Optional)</label>
+                  <input type="tel" id="phone" name="phone" placeholder="Enter phone number">
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="submit-btn-modern">Submit Report &rarr;</button>
+          </form>
+        </div>
+      </div>
+    </main>
 
   <!-- footer -->
    <footer class="footer">
@@ -115,14 +202,14 @@
         </ul>
       </div>
 
-      <!-- Government Links -->
+      <!-- Civic Authorities Links -->
       <div class="footer-section">
-        <h3>Government</h3>
+        <h3>Civic Authorities</h3>
         <ul>
           <li><a href="#">Admin Portal</a></li>
           <li><a href="#">Analytics</a></li>
           <li><a href="#">Departments</a></li>
-          <li><a href="https://.gov.in" target="_blank">gov.in ↗</a></li>
+          <li><a href="#" target="_blank">local.gov ↗</a></li>
         </ul>
       </div>
 
@@ -130,16 +217,16 @@
       <div class="footer-section">
         <h3>Contact</h3>
         <ul>
-          <li>📧 support@civicconnect.gov.in</li>
-          <li>📞 +91-651-XXX-XXXX</li>
-          <li>📍 Department of Higher & Technical Education</li>
-          <li>Government </li>
+          <li>📧 support@civicconnect.org</li>
+          <li>📞 +1-555-XXX-XXXX</li>
+          <li>📍 Department of Civic Administration</li>
+          <li>Local Administration</li>
         </ul>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <div>© 2024 Government. Built for Clean & Green Technology Initiative.</div>
+      <div>© 2024 Civic Authorities. Built for Clean & Green Technology Initiative.</div>
       <div>
         <a href="#">Privacy Policy</a>
         <a href="#">Terms of Service</a>
