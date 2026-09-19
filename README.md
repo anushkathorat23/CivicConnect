@@ -1,8 +1,8 @@
 # 🏙️ CivicConnect
 
-### Smart Civic Issue Reporting & Management Platform
+## Smart Civic Issue Reporting & Management Platform
 
-> **Report. Track. Resolve. Improve your community.**
+> Report. Track. Resolve. Improve your community.
 
 CivicConnect is a web-based civic issue reporting and management platform that allows citizens to report local issues, track their complaints, and view their resolution status.
 
@@ -14,23 +14,23 @@ The platform provides an administrative dashboard for managing reported issues a
 
 ### 👤 Citizen Features
 
-- 📝 Report civic issues through an online form
-- 📍 Submit issue location using latitude and longitude
-- 🏷️ Select issue categories
-- ⚡ Specify issue priority
-- 🔎 Track submitted issues using a Report ID
-- 📊 View issue status and progress
-- 🗺️ View reported issues on an interactive map
-- 🎁 Receive reward points when a reported issue is resolved
+- Report civic issues through an online form
+- Submit issue location using latitude and longitude
+- Select issue categories
+- Specify issue priority
+- Track submitted issues using a Report ID
+- View issue status and progress
+- View reported issues on an interactive map
+- Receive reward points when a reported issue is resolved
 
 ### 🛠️ Admin Features
 
-- 📊 View overall issue statistics
-- 📋 View all reported civic issues
-- 🔍 Filter and manage reports
-- 🔄 Update issue status
-- 📈 View issue-related statistics
-- 🗂️ Monitor issues according to their categories and departments
+- View overall issue statistics
+- View all reported civic issues
+- Filter and manage reports
+- Update issue status
+- View issue-related statistics
+- Monitor issues according to categories and departments
 
 ### 🗄️ Database Features
 
@@ -50,40 +50,29 @@ The platform provides an administrative dashboard for managing reported issues a
 
 ---
 
-# 🔄 How CivicConnect Works
+## 🔄 How CivicConnect Works
 
 ```text
 Citizen
-   │
-   ▼
+   ↓
 Report Civic Issue
-   │
-   ▼
+   ↓
 Select Category + Location + Priority
-   │
-   ▼
+   ↓
 Backend API
-   │
-   ▼
+   ↓
 MySQL Database
-   │
-   ▼
+   ↓
 Admin Reviews Issue
-   │
-   ▼
+   ↓
 Status Updated
-   │
-   ├── Reported
-   ├── In Progress
-   └── Resolved
-   │
-   ▼
+   ↓
+Reported → In Progress → Resolved
+   ↓
 Status History Updated
-   │
-   ▼
+   ↓
 Reward Points Generated
-   │
-   ▼
+   ↓
 Citizen Tracks Resolution
 🏗️ System Architecture
 ┌───────────────────────────────┐
@@ -92,14 +81,14 @@ Citizen Tracks Resolution
 └───────────────┬───────────────┘
                 │
                 │ REST API
-                ▼
+                ↓
 ┌───────────────────────────────┐
 │           Backend             │
 │      Node.js + Express.js     │
 └───────────────┬───────────────┘
                 │
                 │ SQL
-                ▼
+                ↓
 ┌───────────────────────────────┐
 │          MySQL Database       │
 │                               │
@@ -146,8 +135,7 @@ CivicConnect/
 │   ├── queries.sql
 │   ├── views.sql
 │   ├── procedures.sql
-│   ├── triggers.sql
-│   └── README_DBMS.md
+│   └── triggers.sql
 │
 ├── .gitignore
 └── README.md
@@ -158,7 +146,7 @@ Provides the main entry point to CivicConnect and navigation to the platform's m
 
 📝 Report Issue
 
-Citizens can submit civic issues by providing information such as:
+Citizens can submit civic issues by providing:
 
 Issue category
 Description
@@ -196,7 +184,7 @@ Update issue status
 Monitor issue information
 🗄️ Database Design
 
-The project uses a relational MySQL database with six core tables.
+CivicConnect uses a relational MySQL database with six core tables.
 
 Table	Purpose
 Users	Stores citizen/user information
@@ -210,55 +198,50 @@ Users
   │
   ├───────────────┐
   │               │
-  ▼               ▼
+  ↓               ↓
 Issues        Rewards_Log
   │
-  ├──────────────► Categories
+  ├──────────────→ Categories
   │
-  ├──────────────► Departments
+  ├──────────────→ Departments
   │
-  └──────────────► Status_History
+  └──────────────→ Status_History
 🔑 DBMS Concepts Implemented
 
 CivicConnect demonstrates several important DBMS concepts.
 
-1. Primary Keys
+Primary Keys
 
 Each major entity has a unique identifier used as its primary key.
 
-2. Foreign Keys
+Foreign Keys
 
 Relationships between users, issues, categories, departments, status history, and rewards are maintained using foreign keys.
 
-3. Constraints
+Constraints
 
-The database uses constraints to maintain data integrity.
-
-Examples include:
+The database uses constraints to maintain data integrity, including:
 
 PRIMARY KEY
 FOREIGN KEY
 NOT NULL
 UNIQUE
 CHECK
-4. SQL Queries
+SQL Operations
 
-The project includes SQL operations such as:
+The project includes:
 
 SELECT
 INSERT
 UPDATE
 DELETE
-5. Joins
+Joins
 
 The database uses:
 
 INNER JOIN
 LEFT JOIN
-
-to combine information from multiple tables.
-
-6. Aggregate Functions
+Aggregate Functions
 
 Examples include:
 
@@ -267,23 +250,20 @@ SUM()
 AVG()
 MAX()
 MIN()
-7. GROUP BY and HAVING
+GROUP BY and HAVING
 
 Used for analyzing and filtering grouped data.
 
-8. Subqueries
+Subqueries
 
 Used for retrieving data based on results from other queries.
 
-9. Views
+Views
 
-Two database views are implemented:
+The project implements:
 
 vw_IssueDetails
 vw_UnresolvedIssues
-
-These views simplify frequently used queries.
-
 ⚙️ Stored Procedure
 
 The project implements the stored procedure:
@@ -306,13 +286,7 @@ The project implements:
 
 trg_IssueResolved_Reward
 
-The trigger is executed when an issue is updated.
-
-When an issue changes to:
-
-Resolved
-
-the trigger:
+When an issue changes to Resolved, the trigger:
 
 Records the status change in Status_History
 Adds the applicable reward entry to Rewards_Log
@@ -348,7 +322,7 @@ CORS
 dotenv
 Database
 MySQL
-Development Tools
+Development & Deployment
 Visual Studio Code
 Git
 GitHub
@@ -363,3 +337,184 @@ Node.js
 MySQL
 Git
 Visual Studio Code
+1. Clone the Repository
+git clone https://github.com/anushkathorat23/CivicConnect.git
+cd CivicConnect
+2. Set Up the Database
+
+CivicConnect uses MySQL as its database.
+
+The database/ folder contains:
+
+schema.sql - Creates the database tables and relationships
+sample_data.sql - Inserts sample data
+queries.sql - Contains SQL queries used in the project
+views.sql - Creates database views
+procedures.sql - Creates the stored procedure
+triggers.sql - Creates database triggers
+
+Create the CivicConnectDB database in MySQL and execute the required SQL files from the database/ folder.
+
+3. Configure the Backend
+
+Open the backend directory:
+
+cd backend
+
+Install dependencies:
+
+npm install
+
+Create a .env file with your MySQL configuration:
+
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=your_password
+DB_NAME=CivicConnectDB
+DB_PORT=3306
+
+Important: Never commit .env to GitHub because it contains database credentials.
+
+4. Start the Backend
+node server.js
+
+The backend runs on:
+
+http://localhost:5000
+
+5. Run the Frontend
+
+Open the frontend folder in Visual Studio Code and launch front.html.
+
+The project can be run using the Live Server extension.
+
+When running locally, the frontend automatically connects to:
+
+http://localhost:5000/api
+
+☁️ Deployment
+
+CivicConnect follows this deployment architecture:
+
+                Internet
+                   │
+                   ↓
+        ┌────────────────────┐
+        │       Vercel       │
+        │      Frontend      │
+        └─────────┬──────────┘
+                  │
+                  │ HTTPS / REST API
+                  ↓
+        ┌────────────────────┐
+        │      Railway       │
+        │ Node.js + Express  │
+        └─────────┬──────────┘
+                  │
+                  │ SQL
+                  ↓
+        ┌────────────────────┐
+        │      Railway       │
+        │       MySQL        │
+        └────────────────────┘
+Live Project
+
+Frontend:
+https://frontend-sepia-xi-75.vercel.app/front.html
+
+Backend:
+https://backend-production-0c6b2.up.railway.app
+
+GitHub Repository:
+https://github.com/anushkathorat23/CivicConnect
+
+🧪 Testing & Verification
+
+The application has been tested for:
+
+Frontend page loading
+Backend API connectivity
+MySQL database connectivity
+Issue submission
+Report ID generation
+Issue tracking
+Admin issue retrieval
+Admin status updates
+Status history generation
+Reward trigger execution
+Duplicate reward prevention
+Live map issue display
+Resolved issue handling
+Navigation between application pages
+Complete end-to-end user flow
+Verified End-to-End Flow
+Report Issue
+     ↓
+Report ID Generated
+     ↓
+Track Report
+     ↓
+Admin Reviews Issue
+     ↓
+In Progress
+     ↓
+Resolved
+     ↓
+Status History Updated
+     ↓
+Reward Trigger Executed
+     ↓
+Issue Reflected on Live Map
+🎯 Project Objectives
+Provide a centralized platform for reporting civic issues.
+Simplify communication between citizens and administrators.
+Allow citizens to track the progress of reported issues.
+Provide administrators with a centralized issue management dashboard.
+Display reported issues geographically using an interactive map.
+Demonstrate practical implementation of DBMS concepts.
+Maintain issue status history for better transparency.
+Encourage civic participation through a reward mechanism.
+🔮 Future Enhancements
+
+Possible future improvements include:
+
+User authentication and role-based access
+Mobile application
+Real-time notifications
+Email and SMS notifications
+AI-based issue categorization
+Image-based issue verification
+Advanced analytics and reporting
+Improved geolocation features
+Extended citizen reward and achievement system
+Scalable cloud infrastructure
+📚 DBMS Learning Outcomes
+
+CivicConnect demonstrates the practical application of:
+
+Relational Database Design
+        ↓
+Normalization
+        ↓
+Primary & Foreign Keys
+        ↓
+SQL Queries
+        ↓
+Joins & Aggregation
+        ↓
+Views
+        ↓
+Stored Procedures
+        ↓
+Transactions
+        ↓
+Triggers
+        ↓
+Database-Backend Integration
+👩‍💻 Project
+CivicConnect
+
+Smart Civic Issue Reporting & Management Platform
+
+GitHub Repository:
+https://github.com/anushkathorat23/CivicConnect
